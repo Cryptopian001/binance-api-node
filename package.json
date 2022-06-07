@@ -1,5 +1,5 @@
 {
-  "name": "binance-api-node",
+  "name": "@cryptopian001/binance-api-node",
   "version": "0.12.7",
   "description": "A node API wrapper for Binance",
   "main": "dist",
@@ -62,5 +62,8 @@
   },
   "author": "Balthazar Gronon <git@balthazar.dev>",
   "homepage": "https://github.com/Ashlar/binance-api-node",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 }
