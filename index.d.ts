@@ -1,5 +1,5 @@
 // tslint:disable:interface-name
-declare module 'binance-api-node' {
+declare module '@cryptopian/binance-api-node' {
   export default function(options?: {
     apiKey?: string
     apiSecret?: string
@@ -515,7 +515,7 @@ declare module 'binance-api-node' {
       startTime?: number
       endTime?: number
       limit?: number
-      recvWindow: number
+      recvWindow?: number
     }): Promise<QueryOrderResult[]>
     dailyStats(options?: { symbol: string }): Promise<DailyStatsResult | DailyStatsResult[]>
     candles(options: CandlesOptions): Promise<CandleChartResult[]>
@@ -611,11 +611,21 @@ declare module 'binance-api-node' {
     getMultiAssetsMargin(): Promise<MultiAssetsMargin>
     setMultiAssetsMargin(options: MultiAssetsMargin): Promise<MultiAssetsMargin>
 
-    futuresCancelOrder(options: {
-      symbol: string
-      orderId: number
-      useServerTime?: boolean
-    }): Promise<CancelOrderResult>
+    futuresCancelOrder(
+      options:
+        | {
+            symbol: string
+            orderId: number
+            recvWindow?: number
+            useServerTime?: boolean
+          }
+        | {
+            symbol: string
+            origClientOrderId: string
+            recvWindow?: number
+            useServerTime?: boolean
+          },
+    ): Promise<CancelOrderResult>
     futuresCancelAllOpenOrders(options: {
       symbol: string
     }): Promise<FuturesCancelAllOpenOrdersResult>
@@ -628,6 +638,7 @@ declare module 'binance-api-node' {
     }): Promise<QueryFuturesOrderResult>
     futuresOpenOrders(options: {
       symbol?: string
+      recvWindow?: number
       useServerTime?: boolean
     }): Promise<QueryFuturesOrderResult[]>
     futuresPositionRisk(options?: {
@@ -636,14 +647,14 @@ declare module 'binance-api-node' {
     }): Promise<PositionRiskResult[]>
     futuresLeverageBracket(options?: {
       symbol?: string
-      recvWindow: number
+      recvWindow?: number
     }): Promise<LeverageBracketResult[]>
     futuresAccountBalance(options?: { recvWindow: number }): Promise<FuturesBalanceResult[]>
     futuresAccountInfo(options?: { recvWindow: number }): Promise<FuturesAccountInfoResult>
     futuresPositionMode(options?: { recvWindow: number }): Promise<PositionModeResult>
     futuresPositionModeChange(options: {
       dualSidePosition: string
-      recvWindow: number
+      recvWindow?: number
     }): Promise<ChangePositionModeResult>
     futuresLeverage(options: {
       symbol: string
@@ -1345,12 +1356,13 @@ declare module 'binance-api-node' {
     FULL = 'FULL',
   }
 
-  export type TimeInForce_LT = 'GTC' | 'IOC' | 'FOK'
+  export type TimeInForce_LT = 'GTC' | 'IOC' | 'FOK' | 'GTX'
 
   export const enum TimeInForce {
     GTC = 'GTC',
     IOC = 'IOC',
     FOK = 'FOK',
+    GTX = 'GTX',
   }
 
   export type OrderRejectReason_LT =
@@ -1573,7 +1585,7 @@ declare module 'binance-api-node' {
     orderId: number // Order ID
     orderListId: number // OrderListId
     orderRejectReason: OrderRejectReason // Order reject reason; will be an error code.
-    orderStatus: OrderStatus_LT // Current order status
+    status: OrderStatus_LT // Current order status
     orderTime: number // Transaction time
     orderType: FuturesOrderType_LT // Order type
     originalClientOrderId: string | null // Original client order ID; This is the ID of the order being canceled
@@ -1665,10 +1677,10 @@ declare module 'binance-api-node' {
     timeInForce: TimeInForce
     quantity: string
     price: string
-    averagePrice: string
+    avgPrice: string
     stopPrice: string
     executionType: ExecutionType
-    orderStatus: OrderStatus
+    status: OrderStatus
     orderId: number
     lastTradeQuantity: string
     totalTradeQuantity: string
@@ -1902,7 +1914,7 @@ declare module 'binance-api-node' {
     price: string
     origQty: string
     executedQty: string
-    averagePrice: string
+    avgPrice: string
     status: string
     timeInForce: string
     type: OrderType_LT
@@ -2205,7 +2217,7 @@ declare module 'binance-api-node' {
     origQty: string
     lastFilledQty: string
     accumulatedQty: string
-    averagePrice: string
+    avgPrice: string
     status: string
     timeInForce: string
     type: OrderType_LT

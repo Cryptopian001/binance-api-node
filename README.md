@@ -42,6 +42,7 @@ Every REST method returns a Promise, making this library [async await](https://d
 Following examples will use the `await` form, which requires some configuration you will have to lookup.
 
 ### Table of Contents
+
 - [Init](#init)
 - [Public REST Endpoints](#public-rest-endpoints)
   - [ping](#ping)
@@ -80,7 +81,7 @@ Following examples will use the `await` form, which requires some configuration 
   - [cancelOpenOrders](#cancelOpenOrders)
   - [openOrders](#openorders)
   - [allOrders](#allorders)
-  - [allOrdersOCO](#allordersoco)  
+  - [allOrdersOCO](#allordersoco)
   - [accountInfo](#accountinfo)
   - [myTrades](#mytrades)
   - [dailyAccountSnapshot](#dailyAccountSnapshot)
@@ -275,8 +276,8 @@ console.log(await client.book({ symbol: 'ETHBTC' }))
 
 | Param  | Type   | Required | Default |
 | ------ | ------ | -------- | ------- |
-| symbol | String | true     |
-| limit  | Number | false    | `100`   |
+| symbol | String | true     |         |
+| limit  | Number | false    | `100` |
 
 <details>
 <summary>Output</summary>
@@ -307,13 +308,13 @@ Retrieves Candlestick for a symbol. Candlesticks are uniquely identified by thei
 console.log(await client.candles({ symbol: 'ETHBTC' }))
 ```
 
-| Param     | Type   | Required | Default | Description                                                                                    |
-| --------- | ------ | -------- | ------- | ---------------------------------------------------------------------------------------------- |
-| symbol    | String | true     |
-| interval  | String | false    | `5m`    | `1m`, `3m`, `5m`, `15m`, `30m`, `1h`, `2h`,<br>`4h`, `6h`, `8h`, `12h`, `1d`, `3d`, `1w`, `1M` |
-| limit     | Number | false    | `500`   | Max `1000`                                                                                     |
-| startTime | Number | false    |
-| endTime   | Number | false    |
+| Param     | Type   | Required | Default | Description                                                                                                                  |
+| --------- | ------ | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| symbol    | String | true     |         |                                                                                                                              |
+| interval  | String | false    | `5m`  | `1m`, `3m`, `5m`, `15m`, `30m`, `1h`, `2h`,`4h`, `6h`, `8h`, `12h`, `1d`, `3d`, `1w`, `1M` |
+| limit     | Number | false    | `500` | Max `1000`                                                                                                                 |
+| startTime | Number | false    |         |                                                                                                                              |
+| endTime   | Number | false    |         |                                                                                                                              |
 
 <details>
 <summary>Output</summary>
@@ -347,11 +348,11 @@ console.log(await client.aggTrades({ symbol: 'ETHBTC' }))
 
 | Param     | Type   | Required | Default | Description                                              |
 | --------- | ------ | -------- | ------- | -------------------------------------------------------- |
-| symbol    | String | true     |
+| symbol    | String | true     |         |                                                          |
 | fromId    | String | false    |         | ID to get aggregate trades from INCLUSIVE.               |
 | startTime | Number | false    |         | Timestamp in ms to get aggregate trades from INCLUSIVE.  |
 | endTime   | Number | false    |         | Timestamp in ms to get aggregate trades until INCLUSIVE. |
-| limit     | Number | false    | `500`   | Max `500`                                                |
+| limit     | Number | false    | `500` | Max `500`                                              |
 
 Note: If both `startTime` and `endTime` are sent, `limit` should not be sent AND the distance between `startTime` and `endTime` must be less than 24 hours.
 
@@ -388,8 +389,8 @@ console.log(await client.trades({ symbol: 'ETHBTC' }))
 
 | Param  | Type   | Required | Default | Description |
 | ------ | ------ | -------- | ------- | ----------- |
-| symbol | String | true     |
-| limit  | Number | false    | `500`   | Max `500`   |
+| symbol | String | true     |         |             |
+| limit  | Number | false    | `500` | Max `500` |
 
 <details>
 <summary>Output</summary>
@@ -478,7 +479,7 @@ console.log(await client.avgPrice({ symbol: 'ETHBTC' }))
 
 #### prices
 
-Latest price for a symbol, not providing the symbol will return prices for all symbols. 
+Latest price for a symbol, not providing the symbol will return prices for all symbols.
 
 ```js
 console.log(await client.prices())
@@ -613,8 +614,8 @@ console.log(await client.futuresBook({ symbol: 'BTCUSDT' }))
 
 | Param  | Type   | Required | Default |
 | ------ | ------ | -------- | ------- |
-| symbol | String | true     |
-| limit  | Number | false    | `100`   |
+| symbol | String | true     |         |
+| limit  | Number | false    | `100` |
 
 <details>
 <summary>Output</summary>
@@ -645,13 +646,13 @@ Retrieves Candlestick for a symbol. Candlesticks are uniquely identified by thei
 console.log(await client.futuresCandles({ symbol: 'BTCUSDT' }))
 ```
 
-| Param     | Type   | Required | Default | Description                                                                                    |
-| --------- | ------ | -------- | ------- | ---------------------------------------------------------------------------------------------- |
-| symbol    | String | true     |
-| interval  | String | false    | `5m`    | `1m`, `3m`, `5m`, `15m`, `30m`, `1h`, `2h`,<br>`4h`, `6h`, `8h`, `12h`, `1d`, `3d`, `1w`, `1M` |
-| limit     | Number | false    | `500`   | Max `1000`                                                                                     |
-| startTime | Number | false    |
-| endTime   | Number | false    |
+| Param     | Type   | Required | Default | Description                                                                                                                  |
+| --------- | ------ | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| symbol    | String | true     |         |                                                                                                                              |
+| interval  | String | false    | `5m`  | `1m`, `3m`, `5m`, `15m`, `30m`, `1h`, `2h`,`4h`, `6h`, `8h`, `12h`, `1d`, `3d`, `1w`, `1M` |
+| limit     | Number | false    | `500` | Max `1000`                                                                                                                 |
+| startTime | Number | false    |         |                                                                                                                              |
+| endTime   | Number | false    |         |                                                                                                                              |
 
 <details>
 <summary>Output</summary>
@@ -689,7 +690,7 @@ console.log(await client.futuresAggTrades({ symbol: 'ETHBTC' }))
 | fromId    | String | false    |         | ID to get aggregate trades from INCLUSIVE.               |
 | startTime | Number | false    |         | Timestamp in ms to get aggregate trades from INCLUSIVE.  |
 | endTime   | Number | false    |         | Timestamp in ms to get aggregate trades until INCLUSIVE. |
-| limit     | Number | false    | `500`   | Max `500`                                                |
+| limit     | Number | false    | `500` | Max `500`                                              |
 
 Note: If both `startTime` and `endTime` are sent, `limit` should not be sent AND the distance between `startTime` and `endTime` must be less than 24 hours.
 
@@ -725,8 +726,8 @@ console.log(await client.futuresTrades({ symbol: 'ETHBTC' }))
 
 | Param  | Type   | Required | Default | Description |
 | ------ | ------ | -------- | ------- | ----------- |
-| symbol | String | true     |
-| limit  | Number | false    | `500`   | Max `500`   |
+| symbol | String | true     |         |             |
+| limit  | Number | false    | `500` | Max `500` |
 
 <details>
 <summary>Output</summary>
@@ -924,36 +925,36 @@ console.log(
 )
 ```
 
-| Param            | Type   | Required | Default  | Description                                                         |
-| ---------------- | ------ | -------- | -------- | ------------------------------------------------------------------- |
-| symbol           | String | true     |          |                                                                     |
-| side             | String | true     |          | `BUY`,`SELL`                                                        |
-| type             | String | false    | `LIMIT`  | `LIMIT`, `MARKET`                                                   |
-| quantity         | String | true     |          |                                                                     |
-| price            | String | true     |          | Optional for `MARKET` orders                                        |
-| timeInForce      | String | false    | `GTC`    | `FOK`, `GTC`, `IOC`                                                 |
-| newClientOrderId | String | false    |          | A unique id for the order. Automatically generated if not sent.     |
-| stopPrice        | Number | false    |          | Used with stop orders                                               |
-| activationPrice  | Number | false    |          | Used with `TRAILING_STOP_MARKET`                                    |
-| callbackRate     | Number | false    |          | Used with `TRAILING_STOP_MARKET`                                    |
-| newOrderRespType | String | false    | `RESULT` | Returns more complete info of the order. `ACK`, `RESULT`, or `FULL` |
-| icebergQty       | Number | false    |          | Used with iceberg orders                                            |
-| recvWindow       | Number | false    |          |                                                                     |
+| Param            | Type   | Required | Default    | Description                                                              |
+| ---------------- | ------ | -------- | ---------- | ------------------------------------------------------------------------ |
+| symbol           | String | true     |            |                                                                          |
+| side             | String | true     |            | `BUY`,`SELL`                                                         |
+| type             | String | false    | `LIMIT`  | `LIMIT`, `MARKET`                                                    |
+| quantity         | String | true     |            |                                                                          |
+| price            | String | true     |            | Optional for `MARKET` orders                                           |
+| timeInForce      | String | false    | `GTC`    | `FOK`, `GTC`, `IOC`                                                |
+| newClientOrderId | String | false    |            | A unique id for the order. Automatically generated if not sent.          |
+| stopPrice        | Number | false    |            | Used with stop orders                                                    |
+| activationPrice  | Number | false    |            | Used with `TRAILING_STOP_MARKET`                                       |
+| callbackRate     | Number | false    |            | Used with `TRAILING_STOP_MARKET`                                       |
+| newOrderRespType | String | false    | `RESULT` | Returns more complete info of the order.`ACK`, `RESULT`, or `FULL` |
+| icebergQty       | Number | false    |            | Used with iceberg orders                                                 |
+| recvWindow       | Number | false    |            |                                                                          |
 
 Additional mandatory parameters based on `type`:
 
-| Type                   | Additional mandatory parameters                 |
-| -----------------------| ----------------------------------------------- |
-| `LIMIT`                | `timeInForce`, `quantity`, `price`              |
-| `MARKET`               | `quantity`                                      |
-| `STOP`                 | `quantity`, `price`, `stopPrice`                |
+| Type                     | Additional mandatory parameters                         |
+| ------------------------ | ------------------------------------------------------- |
+| `LIMIT`                | `timeInForce`, `quantity`, `price`                |
+| `MARKET`               | `quantity`                                            |
+| `STOP`                 | `quantity`, `price`, `stopPrice`                  |
 | `STOP_LOSS_LIMIT`      | `timeInForce`, `quantity`, `price`, `stopPrice` |
-| `STOP_LOSS_MARKET`     | `stopPrice`                                     |
-| `TAKE_PROFIT`          | `quantity`, `price`, `stopPrice`                |
-| `TAKE_PROFIT_MARKET`   | `stopPrice`                                     |
+| `STOP_LOSS_MARKET`     | `stopPrice`                                           |
+| `TAKE_PROFIT`          | `quantity`, `price`, `stopPrice`                  |
+| `TAKE_PROFIT_MARKET`   | `stopPrice`                                           |
 | `STOP_PROFIT_LIMIT`    | `timeInForce`, `quantity`, `price`, `stopPrice` |
-| `LIMIT_MAKER`          | `quantity`, `price`                             |
-| `TRAILING_STOP_MARKET` | `callbackRate`, `activationPrice`               |
+| `LIMIT_MAKER`          | `quantity`, `price`                                 |
+| `TRAILING_STOP_MARKET` | `callbackRate`, `activationPrice`                   |
 
 - `LIMIT_MAKER` are `LIMIT` orders that will be rejected if they would immediately match and trade as a taker.
 - `STOP` and `TAKE_PROFIT` will execute a `MARKET` order when the `stopPrice` is reached.
@@ -1004,30 +1005,31 @@ console.log(
 )
 ```
 
-| Param                | Type   | Required | Description
-|----------------------|--------|----------|------------
-| symbol               | String | true     |
-| listClientOrderId    | String | false    | A unique Id for the entire orderList
-| side                 | String | true     | `BUY`,`SELL`
-| quantity             | Number | true     |
-| limitClientOrderId   | String | false    | A unique Id for the limit order
-| price                | Number | true     |
-| limitIcebergQty      | Number | false    | Used to make the `LIMIT_MAKER` leg an iceberg order.
-| stopClientOrderId    | String | false    | A unique Id for the stop loss/stop loss limit leg
-| stopPrice            | Number | true
-| stopLimitPrice       | Number | false    | If provided, `stopLimitTimeInForce` is required.
-| stopIcebergQty       | Number | false    | Used with `STOP_LOSS_LIMIT` leg to make an iceberg order.
-| stopLimitTimeInForce | String | false    | `FOK`, `GTC`, `IOC`
-| newOrderRespType     | String | false    | Returns more complete info of the order. `ACK`, `RESULT`, or `FULL`
-| recvWindow           | Number | false    | The value cannot be greater than `60000`
+| Param                | Type   | Required | Description                                                              |
+| -------------------- | ------ | -------- | ------------------------------------------------------------------------ |
+| symbol               | String | true     |                                                                          |
+| listClientOrderId    | String | false    | A unique Id for the entire orderList                                     |
+| side                 | String | true     | `BUY`,`SELL`                                                         |
+| quantity             | Number | true     |                                                                          |
+| limitClientOrderId   | String | false    | A unique Id for the limit order                                          |
+| price                | Number | true     |                                                                          |
+| limitIcebergQty      | Number | false    | Used to make the `LIMIT_MAKER` leg an iceberg order.                   |
+| stopClientOrderId    | String | false    | A unique Id for the stop loss/stop loss limit leg                        |
+| stopPrice            | Number | true     |                                                                          |
+| stopLimitPrice       | Number | false    | If provided,`stopLimitTimeInForce` is required.                        |
+| stopIcebergQty       | Number | false    | Used with `STOP_LOSS_LIMIT` leg to make an iceberg order.              |
+| stopLimitTimeInForce | String | false    | `FOK`, `GTC`, `IOC`                                                |
+| newOrderRespType     | String | false    | Returns more complete info of the order.`ACK`, `RESULT`, or `FULL` |
+| recvWindow           | Number | false    | The value cannot be greater than `60000`                               |
 
 Additional Info:
+
 - Price Restrictions:
-    - `SELL`: Limit Price > Last Price > Stop Price
-    - `BUY`: Limit Price < Last Price < Stop Price
+  - `SELL`: Limit Price > Last Price > Stop Price
+  - `BUY`: Limit Price < Last Price < Stop Price
 - Quantity Restrictions:
-    - Both legs must have the same quantity.
-    - ```ICEBERG``` quantities however do not have to be the same
+  - Both legs must have the same quantity.
+  - ``ICEBERG`` quantities however do not have to be the same
 
 <details>
 <summary>Output</summary>
@@ -1104,12 +1106,12 @@ console.log(
 )
 ```
 
-| Param             | Type   | Required | Description                                 |
-| ----------------- | ------ | -------- | ------------------------------------------- |
-| symbol            | String | true     |
+| Param             | Type   | Required | Description                                   |
+| ----------------- | ------ | -------- | --------------------------------------------- |
+| symbol            | String | true     |                                               |
 | orderId           | Number | true     | Not required if `origClientOrderId` is used |
-| origClientOrderId | String | false    |
-| recvWindow        | Number | false    |
+| origClientOrderId | String | false    |                                               |
+| recvWindow        | Number | false    |                                               |
 
 <details>
 <summary>Output</summary>
@@ -1133,7 +1135,6 @@ console.log(
   type: 'LIMIT',
   updateTime: 1547075016737
 }
-
 ```
 
 </details>
@@ -1150,11 +1151,11 @@ console.log(
 )
 ```
 
-| Param             | Type   | Required | Description                                 |
-| ----------------- | ------ | -------- | ------------------------------------------- |
+| Param             | Type   | Required | Description                                   |
+| ----------------- | ------ | -------- | --------------------------------------------- |
 | orderListId       | Number | true     | Not required if `listClientOrderId` is used |
-| listClientOrderId | String | false    |
-| recvWindow        | Number | false    |
+| listClientOrderId | String | false    |                                               |
+| recvWindow        | Number | false    |                                               |
 
 <details>
 <summary>Output</summary>
@@ -1200,11 +1201,11 @@ console.log(
 
 | Param             | Type   | Required | Description                                                                |
 | ----------------- | ------ | -------- | -------------------------------------------------------------------------- |
-| symbol            | String | true     |
-| orderId           | Number | true     | Not required if `origClientOrderId` is used                                |
-| origClientOrderId | String | false    |
+| symbol            | String | true     |                                                                            |
+| orderId           | Number | true     | Not required if `origClientOrderId` is used                              |
+| origClientOrderId | String | false    |                                                                            |
 | newClientOrderId  | String | false    | Used to uniquely identify this cancel. Automatically generated by default. |
-| recvWindow        | Number | false    |
+| recvWindow        | Number | false    |                                                                            |
 
 <details>
 <summary>Output</summary>
@@ -1235,11 +1236,11 @@ console.log(
 
 | Param             | Type   | Required | Description                                                                |
 | ----------------- | ------ | -------- | -------------------------------------------------------------------------- |
-| symbol            | String | true     |
-| orderListId       | Number | true     | Not required if `listClientOrderId` is used                                |
-| listClientOrderId | String | false    |
+| symbol            | String | true     |                                                                            |
+| orderListId       | Number | true     | Not required if `listClientOrderId` is used                              |
+| listClientOrderId | String | false    |                                                                            |
 | newClientOrderId  | String | false    | Used to uniquely identify this cancel. Automatically generated by default. |
-| recvWindow        | Number | false    |
+| recvWindow        | Number | false    |                                                                            |
 
 <details>
 <summary>Output</summary>
@@ -1315,9 +1316,10 @@ console.log(
   }),
 )
 ```
-| Param      | Type     | Required  |
-|------------|----------|-----------|
-| symbol     | String   | true      |  
+
+| Param  | Type   | Required |
+| ------ | ------ | -------- |
+| symbol | String | true     |
 
 <details>
 <summary>Output</summary>
@@ -1398,10 +1400,10 @@ console.log(
 
 | Param      | Type   | Required | Default | Description                                                                            |
 | ---------- | ------ | -------- | ------- | -------------------------------------------------------------------------------------- |
-| symbol     | String | true     |
+| symbol     | String | true     |         |                                                                                        |
 | orderId    | Number | false    |         | If set, it will get orders >= that orderId. Otherwise most recent orders are returned. |
-| limit      | Number | false    | `500`   | Max `500`                                                                              |
-| recvWindow | Number | false    |
+| limit      | Number | false    | `500` | Max `500`                                                                            |
+| recvWindow | Number | false    |         |                                                                                        |
 
 <details>
 <summary>Output</summary>
@@ -1429,7 +1431,6 @@ console.log(
 
 </details>
 
-
 #### allOrdersOCO
 
 Retrieves all OCO based on provided optional parameters
@@ -1443,11 +1444,11 @@ console.log(
 ```
 
 | Param      | Type    | Required | Default | Description                                               |
-|------------|---------|----------|---------|-----------------------------------------------------------|
+| ---------- | ------- | -------- | ------- | --------------------------------------------------------- |
 | timestamp  | Number  | true     |         |                                                           |
 | startTime  | Number  | false    |         |                                                           |
 | endTime    | Number  | false    |         |                                                           |
-| limit      | Integer | false    | `500`   | Max `1000`                                                |
+| limit      | Integer | false    | `500` | Max `1000`                                              |
 | recvWindow | Number  | false    |         | The value cannot be greater than 60000                    |
 | formId     | Number  | false    |         | If supplied, neither startTime or endTime can be provided |
 
@@ -1503,7 +1504,6 @@ console.log(
 
 </details>
 
-
 #### accountInfo
 
 Get current account information.
@@ -1549,15 +1549,15 @@ console.log(
 )
 ```
 
-| Param      | Type   | Required | Default | Description                                             |
-| ---------- | ------ | -------- | ------- | ------------------------------------------------------- |
-| symbol     | String | true     |
-| limit      | Number | false    | `500`   | Max `1000`                                              |
-| fromId     | Number | false    |         | TradeId to fetch from. Default gets most recent trades. |
-| orderId    | Number | false    |         | This can only be used in combination with symbol.       |
-| startTime  | Number | false    |         |                                                         |
-| endTime    | Number | false    |         |                                                         |
-| recvWindow | Number | false    | `5000`  | The value cannot be greater than `60000`.               |
+| Param      | Type   | Required | Default  | Description                                             |
+| ---------- | ------ | -------- | -------- | ------------------------------------------------------- |
+| symbol     | String | true     |          |                                                         |
+| limit      | Number | false    | `500`  | Max `1000`                                            |
+| fromId     | Number | false    |          | TradeId to fetch from. Default gets most recent trades. |
+| orderId    | Number | false    |          | This can only be used in combination with symbol.       |
+| startTime  | Number | false    |          |                                                         |
+| endTime    | Number | false    |          |                                                         |
+| recvWindow | Number | false    | `5000` | The value cannot be greater than `60000`.             |
 
 <details>
 <summary>Output</summary>
@@ -1593,13 +1593,13 @@ console.log(
 )
 ```
 
-| Param      | Type   | Required | Default | Description                                             |
-| ---------- | ------ | -------- | ------- | ------------------------------------------------------- |
-| type       | String | true     |
-| startTime  | Number | false    |
-| endTime    | Number | false    |
-| limit      | Number | false    | `5`     | min `5`, max `30`, default `5`                          |
-| recvWindow | Number | false    |
+| Param      | Type   | Required | Default | Description                          |
+| ---------- | ------ | -------- | ------- | ------------------------------------ |
+| type       | String | true     |         |                                      |
+| startTime  | Number | false    |         |                                      |
+| endTime    | Number | false    |         |                                      |
+| limit      | Number | false    | `5`   | min `5`, max `30`, default `5` |
+| recvWindow | Number | false    |         |                                      |
 
 <details>
 <summary>Output</summary>
@@ -1642,11 +1642,11 @@ Lookup symbol trades history.
 console.log(await client.tradesHistory({ symbol: 'ETHBTC' }))
 ```
 
-| Param  | Type   | Required | Default | Description                                             |
-| ------ | ------ | -------- | ------- | ------------------------------------------------------- |
-| symbol | String | true     |
-| limit  | Number | false    | `500`   | Max `500`                                               |
-| fromId | Number | false    | `null`  | TradeId to fetch from. Default gets most recent trades. |
+| Param  | Type   | Required | Default  | Description                                             |
+| ------ | ------ | -------- | -------- | ------------------------------------------------------- |
+| symbol | String | true     |          |                                                         |
+| limit  | Number | false    | `500`  | Max `500`                                             |
+| fromId | Number | false    | `null` | TradeId to fetch from. Default gets most recent trades. |
 
 <details>
 <summary>Output</summary>
@@ -1732,11 +1732,11 @@ console.log(
 
 | Param      | Type   | Required | Description                |
 | ---------- | ------ | -------- | -------------------------- |
-| asset      | String | true     |
-| address    | String | true     |
-| amount     | Number | true     |
+| asset      | String | true     |                            |
+| address    | String | true     |                            |
+| amount     | Number | true     |                            |
 | name       | String | false    | Description of the address |
-| recvWindow | Number | false    |
+| recvWindow | Number | false    |                            |
 
 <details>
 <summary>Output</summary>
@@ -1757,10 +1757,10 @@ Fetch deposit address with network.
 console.log(await client.depositAddress({ coin: 'NEO' }))
 ```
 
-| Param    | Type   | Required | Description      |
-| -------- | ------ | -------- | ---------------- |
-| coin     | String | true     | The coin name    |
-| network  | String | false    | The network name |
+| Param   | Type   | Required | Description      |
+| ------- | ------ | -------- | ---------------- |
+| coin    | String | true     | The coin name    |
+| network | String | false    | The network name |
 
 <details>
 <summary>Output</summary>
@@ -1776,7 +1776,6 @@ console.log(await client.depositAddress({ coin: 'NEO' }))
 
 </details>
 
-
 #### depositHistory
 
 Fetch deposit address with network.
@@ -1785,15 +1784,15 @@ Fetch deposit address with network.
 console.log(await client.depositHistory())
 ```
 
-| Param      | Type   | Required | Description      |
-| ---------- | ------ | -------- | ---------------- |
-| coin       | String | false    | The coin name    |
+| Param      | Type   | Required | Description                                               |
+| ---------- | ------ | -------- | --------------------------------------------------------- |
+| coin       | String | false    | The coin name                                             |
 | status     | Number | false    | 0 (0:pending, 6: credited but cannot withdraw, 1:success) |
-| startTime  | Number | false    | Default: 90 days from current timestamp |
-| endTime    | Number | false    | Default: present timestamp |
-| offset     | Number | false    | default: 0       |
-| limit      | Number | false    |                  |
-| recvWindow | Number | false    |                  |
+| startTime  | Number | false    | Default: 90 days from current timestamp                   |
+| endTime    | Number | false    | Default: present timestamp                                |
+| offset     | Number | false    | default: 0                                                |
+| limit      | Number | false    |                                                           |
+| recvWindow | Number | false    |                                                           |
 
 <details>
 <summary>Output</summary>
@@ -1853,7 +1852,6 @@ console.log(await client.tradeFee())
       "takerCommission": 0.3000
     }
 ]
-
 ```
 
 </details>
@@ -1921,12 +1919,12 @@ You need to enable Permits Universal Transfer option for the api key which reque
 console.log(await client.universalTransfer({ type: 'MAIN_C2C', asset: 'USDT', amount: '1000' }))
 ```
 
-| Param      | Type   | Required | Description      |
-| ---------- | ------ | -------- | ---------------- |
-| type       | String | true     |
-| asset      | String | true     |
-| amount     | String | true     |
-| recvWindow | Number | false    |
+| Param      | Type   | Required | Description |
+| ---------- | ------ | -------- | ----------- |
+| type       | String | true     |             |
+| asset      | String | true     |             |
+| amount     | String | true     |             |
+| recvWindow | Number | false    |             |
 
 <details>
 <summary>Output</summary>
@@ -1947,12 +1945,12 @@ console.log(await client.universalTransferHistory({ type: 'MAIN_C2C' }))
 
 | Param      | Type   | Required | Description         |
 | ---------- | ------ | -------- | ------------------- |
-| type       | String | true     |
-| startTime  | Number | false    |
-| endTime    | Number | false    |
+| type       | String | true     |                     |
+| startTime  | Number | false    |                     |
+| endTime    | Number | false    |                     |
 | current    | Number | false    | Default 1           |
 | size       | Number | false    | Default 10, Max 100 |
-| recvWindow | Number | false    |
+| recvWindow | Number | false    |                     |
 
 <details>
 <summary>Output</summary>
@@ -1989,9 +1987,9 @@ console.log(await client.universalTransferHistory({ type: 'MAIN_C2C' }))
 console.log(await client.assetDetail())
 ```
 
-| Param      | Type     | Required | Description         |
-| ---------- | -------- | -------- | ------------------- |
-| recvWindow | Number   | false    |
+| Param      | Type   | Required | Description |
+| ---------- | ------ | -------- | ----------- |
+| recvWindow | Number | false    |             |
 
 <details>
 <summary>Output</summary>
@@ -2022,9 +2020,9 @@ console.log(await client.assetDetail())
 console.log(await client.getBnbBurn())
 ```
 
-| Param      | Type     | Required | Description         |
-| ---------- | -------- | -------- | ------------------- |
-| recvWindow | Number   | false    | No more than 60000  |
+| Param      | Type   | Required | Description        |
+| ---------- | ------ | -------- | ------------------ |
+| recvWindow | Number | false    | No more than 60000 |
 
 <details>
 <summary>Output</summary>
@@ -2044,11 +2042,11 @@ console.log(await client.getBnbBurn())
 console.log(await client.setBnbBurn({ spotBNBBurn: "true" }))
 ```
 
-| Param           | Type     | Required | Description         |
-| --------------- | -------- | -------- | ------------------- |
-| spotBNBBurn     | String   | false    | "true" or "false"; Determines whether to use BNB to pay for trading fees on SPOT |
-| interestBNBBurn | String   | false    | "true" or "false"; Determines whether to use BNB to pay for margin loan's interest  |
-| recvWindow      | Number   | false    | No more than 60000 |
+| Param           | Type   | Required | Description                                                                        |
+| --------------- | ------ | -------- | ---------------------------------------------------------------------------------- |
+| spotBNBBurn     | String | false    | "true" or "false"; Determines whether to use BNB to pay for trading fees on SPOT   |
+| interestBNBBurn | String | false    | "true" or "false"; Determines whether to use BNB to pay for margin loan's interest |
+| recvWindow      | Number | false    | No more than 60000                                                                 |
 
 <details>
 <summary>Output</summary>
@@ -2068,11 +2066,11 @@ console.log(await client.setBnbBurn({ spotBNBBurn: "true" }))
 console.log(await client.dustLog())
 ```
 
-| Param      | Type     | Required | Description         |
-| ---------- | -------- | -------- | ------------------- |
-| startTime  | Number   | false    |
-| endTime    | Number   | false    |
-| recvWindow | Number   | false    |
+| Param      | Type   | Required | Description |
+| ---------- | ------ | -------- | ----------- |
+| startTime  | Number | false    |             |
+| endTime    | Number | false    |             |
+| recvWindow | Number | false    |             |
 
 <details>
 <summary>Output</summary>
@@ -2142,10 +2140,10 @@ console.log(await client.dustLog())
 console.log(await client.dustTransfer({ asset: ['ETH', 'LTC', 'TRX'] }))
 ```
 
-| Param      | Type     | Required | Description         |
-| ---------- | -------- | -------- | ------------------- |
-| asset      | [String] | true     |
-| recvWindow | Number   | false    |
+| Param      | Type     | Required | Description |
+| ---------- | -------- | -------- | ----------- |
+| asset      | [String] | true     |             |
+| recvWindow | Number   | false    |             |
 
 <details>
 <summary>Output</summary>
@@ -2180,7 +2178,7 @@ console.log(await client.dustTransfer({ asset: ['ETH', 'LTC', 'TRX'] }))
             "transferedAmount":"0.02727099"
         }
     ]
-}   
+}
 ```
 
 </details>
@@ -2193,9 +2191,9 @@ Retrieve account coins related information. Implemented as `getAll` in Binance D
 console.log(await client.accountCoins())
 ```
 
-| Param      | Type     | Required | Description         |
-| ---------- | -------- | -------- | ------------------- |
-| recvWindow | Number   | false    |
+| Param      | Type   | Required | Description |
+| ---------- | ------ | -------- | ----------- |
+| recvWindow | Number | false    |             |
 
 <details>
 <summary>Output</summary>
@@ -2307,10 +2305,10 @@ Query funding wallet, includes Binance Pay, Binance Card, Binance Gift Card, Sto
 console.log(await client.fundingWallet())
 ```
 
-| Param      | Type     | Required | Description         |
-| ---------- | -------- | -------- | ------------------- |
-| asset      | String   | false    |
-| needBtcValuation      | String   | false    | 'true' or 'false'
+| Param            | Type   | Required | Description       |
+| ---------------- | ------ | -------- | ----------------- |
+| asset            | String | false    |                   |
+| needBtcValuation | String | false    | 'true' or 'false' |
 
 <details>
 <summary>Output</summary>
@@ -2338,9 +2336,9 @@ Get API Key Permission.
 console.log(await client.apiPermission())
 ```
 
-| Param      | Type     | Required | Description         |
-| ---------- | -------- | -------- | ------------------- |
-| recvWindow      | Number   | false    |
+| Param      | Type   | Required | Description |
+| ---------- | ------ | -------- | ----------- |
+| recvWindow | Number | false    |             |
 
 <details>
 <summary>Output</summary>
@@ -2373,9 +2371,9 @@ Query cross margin account details (USER_DATA)
 console.log(await client.marginAccountInfo());
 ```
 
-| Param | Type   | Required | Description    |
-| ----- | ------ | -------- | -------------- |
-| recvWindow | Number | false     | No more than 60000 |
+| Param      | Type   | Required | Description        |
+| ---------- | ------ | -------- | ------------------ |
+| recvWindow | Number | false    | No more than 60000 |
 
 <details>
 <summary>Output</summary>
@@ -2428,7 +2426,6 @@ console.log(await client.marginAccountInfo());
 
 </details>
 
-
 #### marginLoan
 
 Create a loan for margin account.
@@ -2440,8 +2437,7 @@ console.log(await client.marginLoan({ asset: 'BTC', amount:'0.0001' }));
 | Param  | Type   | Required | Description    |
 | ------ | ------ | -------- | -------------- |
 | asset  | String | true     | The asset name |
-| amount | Number | true     |
-
+| amount | Number | true     |                |
 
 <details>
 <summary>Output</summary>
@@ -2465,8 +2461,7 @@ console.log(await client.marginRepay({ asset: 'BTC', amount:'0.0001' }));
 | Param  | Type   | Required | Description    |
 | ------ | ------ | -------- | -------------- |
 | asset  | String | true     | The asset name |
-| amount | Number | true     |
-
+| amount | Number | true     |                |
 
 <details>
 <summary>Output</summary>
@@ -2487,10 +2482,10 @@ Query Isolated Margin Account Info
 console.log(await client.marginIsolatedAccount({ symbols: 'BTCUSDT'}));
 ```
 
-| Param | Type   | Required | Description    |
-| ----- | ------ | -------- | -------------- |
-| symbols | String | false     | Max 5 symbols can be sent; separated by "," |
-| recvWindow | Number | false     | No more than 60000 |
+| Param      | Type   | Required | Description                                 |
+| ---------- | ------ | -------- | ------------------------------------------- |
+| symbols    | String | false    | Max 5 symbols can be sent; separated by "," |
+| recvWindow | Number | false    | No more than 60000                          |
 
 <details>
 <summary>Output</summary>
@@ -2552,10 +2547,10 @@ Inactive Isolated Margin trading pair for symbol
 console.log(await client.disableMarginAccount({ symbol: 'BTCUSDT' }));
 ```
 
-| Param | Type   | Required | Description    |
-| ----- | ------ | -------- | -------------- |
-| symbol | String | true     |  |
-| recvWindow | Number | false     | No more than 60000 |
+| Param      | Type   | Required | Description        |
+| ---------- | ------ | -------- | ------------------ |
+| symbol     | String | true     |                    |
+| recvWindow | Number | false    | No more than 60000 |
 
 <details>
 <summary>Output</summary>
@@ -2576,10 +2571,10 @@ Active Isolated Margin trading pair for symbol
 console.log(await client.enableMarginAccount({ symbol: 'BTCUSDT' }));
 ```
 
-| Param | Type   | Required | Description    |
-| ----- | ------ | -------- | -------------- |
-| symbol | String | true     |  |
-| recvWindow | Number | false     | No more than 60000 |
+| Param      | Type   | Required | Description        |
+| ---------- | ------ | -------- | ------------------ |
+| symbol     | String | true     |                    |
+| recvWindow | Number | false    | No more than 60000 |
 
 <details>
 <summary>Output</summary>
@@ -2601,11 +2596,11 @@ If isolatedSymbol is not sent, crossed margin data will be sent.
 console.log(await client.marginMaxBorrow({ asset: 'BTC', isolatedSymbol: 'BTCUSDT'}));
 ```
 
-| Param | Type   | Required | Description    |
-| ----- | ------ | -------- | -------------- |
-| asset | String | true     |
-| isolatedSymbol| String | false | 
-| recvWindow | Number | false     | No more than 60000 |
+| Param          | Type   | Required | Description        |
+| -------------- | ------ | -------- | ------------------ |
+| asset          | String | true     |                    |
+| isolatedSymbol | String | false    |                    |
+| recvWindow     | Number | false    | No more than 60000 |
 
 <details>
 <summary>Output</summary>
@@ -2640,6 +2635,7 @@ console.log(await client.marginCreateIsolated({ base: 'BTC', quote: 'USDT'}));
     "symbol": "BTCUSDT"
 }
 ```
+
 </details>
 
 #### marginIsolatedTransfer
@@ -2651,15 +2647,15 @@ console.log(await client.marginIsolatedTransfer({ asset: 'USDT', symbol: 'BNBUSD
 | Param      | Type   | Required | Description               |
 | ---------- | ------ | -------- | ------------------------- |
 | asset      | String | true     | asset,such as BTC         |
-| symbol     | String | true     |
+| symbol     | String | true     |                           |
 | transFrom  | String | true     | "SPOT", "ISOLATED_MARGIN" |
 | transTo    | String | true     | "SPOT", "ISOLATED_MARGIN" |
-| amount     | Number | true     |
+| amount     | Number | true     |                           |
 | recvWindow | Number | false    | No more than 60000        |
 
 <details>
 <summary>Output</summary>
-    
+
 ```js
 {
     //transaction id
@@ -2678,18 +2674,18 @@ console.log(await client.marginIsolatedTransferHistory({ symbol: 'BNBUSDT'}));
 | Param      | Type   | Required | Description               |
 | ---------- | ------ | -------- | ------------------------- |
 | asset      | String | false    | asset,such as BTC         |
-| symbol     | String | true     |
+| symbol     | String | true     |                           |
 | transFrom  | String | false    | "SPOT", "ISOLATED_MARGIN" |
 | transTo    | String | false    | "SPOT", "ISOLATED_MARGIN" |
-| startTime  | Number | false    |
-| endTime    | Number | false    |
+| startTime  | Number | false    |                           |
+| endTime    | Number | false    |                           |
 | current    | Number | false    | Current page, default 1   |
 | size       | Number | false    | Default 10, max 100       |
 | recvWindow | Number | false    | No more than 60000        |
 
 <details>
 <summary>Output</summary>
-    
+
 ```js
 {
   "rows": [
@@ -2729,26 +2725,26 @@ console.log(await client.marginOrder({
   }));
 ```
 
-| Param             | Type    | Required | Description               |
-| ----------------- | ------- | -------- | ------------------------- |
-| symbol            | String  | true     | asset, such as `BTC`      |
-| isIsolated        | String  | false    | for isolated margin or not, `TRUE`, `FALSE`, default `FALSE`
-| side              | String  | true     | `BUY` `SELL` |
-| type              | String  | true     |  
-| quantity          | String  | false    |
-| quoteOrderQty     | String  | false    |
-| price             | String  | false    | 
-| stopPrice         | String  | false    | Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.
-| newClientOrderId  | String  | false    | A unique id among open orders. Automatically generated if not sent.
-| icebergQty        | Boolean | false    | Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.
-| newOrderRespType  | String  | false    | Set the response JSON. `ACK`, `RESULT`, or `FULL`; `MARKET` and `LIMIT` order types default to `FULL`, all other orders default to `ACK`.
-| sideEffectType    | String  | false    | `NO_SIDE_EFFECT`, `MARGIN_BUY`, `AUTO_REPAY`; default `NO_SIDE_EFFECT`.
-| timeInForce       | String  | false    | `GTC`,`IOC`,`FOK`        |
-| recvWindow        | Number  | false    | No more than 60000        |
+| Param            | Type    | Required | Description                                                                                                                                            |
+| ---------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| symbol           | String  | true     | asset, such as `BTC`                                                                                                                                 |
+| isIsolated       | String  | false    | for isolated margin or not,`TRUE`, `FALSE`, default `FALSE`                                                                                      |
+| side             | String  | true     | `BUY` `SELL`                                                                                                                                       |
+| type             | String  | true     |                                                                                                                                                        |
+| quantity         | String  | false    |                                                                                                                                                        |
+| quoteOrderQty    | String  | false    |                                                                                                                                                        |
+| price            | String  | false    |                                                                                                                                                        |
+| stopPrice        | String  | false    | Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.                                                       |
+| newClientOrderId | String  | false    | A unique id among open orders. Automatically generated if not sent.                                                                                    |
+| icebergQty       | Boolean | false    | Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.                                                        |
+| newOrderRespType | String  | false    | Set the response JSON.`ACK`, `RESULT`, or `FULL`; `MARKET` and `LIMIT` order types default to `FULL`, all other orders default to `ACK`. |
+| sideEffectType   | String  | false    | `NO_SIDE_EFFECT`, `MARGIN_BUY`, `AUTO_REPAY`; default `NO_SIDE_EFFECT`.                                                                        |
+| timeInForce      | String  | false    | `GTC`,`IOC`,`FOK`                                                                                                                                |
+| recvWindow       | Number  | false    | No more than 60000                                                                                                                                     |
 
 <details>
 <summary>Output</summary>
-    
+
 ```js
 {
   "symbol": "BTCUSDT",
@@ -2814,27 +2810,27 @@ console.log(await client.marginOrderOco({
   }));
 ```
 
-| Param             | Type    | Required | Description               |
-| ----------------- | ------- | -------- | ------------------------- |
-| symbol            | String  | true     | asset, such as `BTC`      |
-| isIsolated        | String  | false    | for isolated margin or not, `TRUE`, `FALSE`, default `FALSE`
-| side              | String  | true     | `BUY` `SELL` |
-| type              | String  | true     |  
-| quantity          | String  | false    |
-| quoteOrderQty     | String  | false    |
-| price             | String  | false    | 
-| stopPrice         | String  | false    | Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.
-| stopLimitPrice    | String  | false    | Used with `STOP_LOSS_LIMIT` orders.
-| newClientOrderId  | String  | false    | A unique id among open orders. Automatically generated if not sent.
-| icebergQty        | Boolean | false    | Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.
-| newOrderRespType  | String  | false    | Set the response JSON. `ACK`, `RESULT`, or `FULL`; `MARKET` and `LIMIT` order types default to `FULL`, all other orders default to `ACK`.
-| sideEffectType    | String  | false    | `NO_SIDE_EFFECT`, `MARGIN_BUY`, `AUTO_REPAY`; default `NO_SIDE_EFFECT`.
-| timeInForce       | String  | false    | `GTC`,`IOC`,`FOK`        |
-| recvWindow        | Number  | false    | No more than 60000        |
+| Param            | Type    | Required | Description                                                                                                                                            |
+| ---------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| symbol           | String  | true     | asset, such as `BTC`                                                                                                                                 |
+| isIsolated       | String  | false    | for isolated margin or not,`TRUE`, `FALSE`, default `FALSE`                                                                                      |
+| side             | String  | true     | `BUY` `SELL`                                                                                                                                       |
+| type             | String  | true     |                                                                                                                                                        |
+| quantity         | String  | false    |                                                                                                                                                        |
+| quoteOrderQty    | String  | false    |                                                                                                                                                        |
+| price            | String  | false    |                                                                                                                                                        |
+| stopPrice        | String  | false    | Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.                                                       |
+| stopLimitPrice   | String  | false    | Used with `STOP_LOSS_LIMIT` orders.                                                                                                                  |
+| newClientOrderId | String  | false    | A unique id among open orders. Automatically generated if not sent.                                                                                    |
+| icebergQty       | Boolean | false    | Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.                                                        |
+| newOrderRespType | String  | false    | Set the response JSON.`ACK`, `RESULT`, or `FULL`; `MARKET` and `LIMIT` order types default to `FULL`, all other orders default to `ACK`. |
+| sideEffectType   | String  | false    | `NO_SIDE_EFFECT`, `MARGIN_BUY`, `AUTO_REPAY`; default `NO_SIDE_EFFECT`.                                                                        |
+| timeInForce      | String  | false    | `GTC`,`IOC`,`FOK`                                                                                                                                |
+| recvWindow       | Number  | false    | No more than 60000                                                                                                                                     |
 
 <details>
 <summary>Output</summary>
-    
+
 ```js
 {
   "orderListId": 45514668,
@@ -2906,17 +2902,17 @@ console.log(await client.marginGetOrder({
   }));
 ```
 
-| Param                | Type   | Required | Description               |
-| -------------------- | ------ | -------- | ------------------------- |
-| symbol               | String | true     | asset,such as BTC         |
-| isIsolated           | String | false    | for isolated margin or not, `TRUE`, `FALSE`, default `FALSE`
-| orderId              | String | false    | 
-| origClientOrderId    | String | false    | 
-| recvWindow           | Number | false    | The value cannot be greater than `60000`
+| Param             | Type   | Required | Description                                                       |
+| ----------------- | ------ | -------- | ----------------------------------------------------------------- |
+| symbol            | String | true     | asset,such as BTC                                                 |
+| isIsolated        | String | false    | for isolated margin or not,`TRUE`, `FALSE`, default `FALSE` |
+| orderId           | String | false    |                                                                   |
+| origClientOrderId | String | false    |                                                                   |
+| recvWindow        | Number | false    | The value cannot be greater than `60000`                        |
 
 <details>
 <summary>Output</summary>
-    
+
 ```js
 {
    "clientOrderId": "ZwfQzuDIGpceVhKW5DvCmO",
@@ -2964,6 +2960,7 @@ console.log(await client.getPortfolioMarginAccountInfo())
     "accountStatus": "NORMAL"   // Portfolio margin account status:"NORMAL", "MARGIN_CALL", "SUPPLY_MARGIN", "REDUCE_ONLY", "ACTIVE_LIQUIDATION", "FORCE_LIQUIDATION", "BANKRUPTED"
 }
 ```
+
 </details>
 
 ### Futures Authenticated REST endpoints
@@ -2973,20 +2970,18 @@ console.log(await client.getPortfolioMarginAccountInfo())
 Check an order's status.
 
 - These orders will not be found
-  - order status is CANCELED or EXPIRED, <b>AND</b>
-  - order has NO filled trade, <b>AND</b>
+  - order status is CANCELED or EXPIRED, `<b>`AND`</b>`
+  - order has NO filled trade, `<b>`AND`</b>`
   - created time + 7 days < current time
-  
 
-| Name              | Type   | Mandatory | Description      |
-| ----------------- | ------ | --------  | ---------------- |
-| symbol            | STRING | YES       | The pair name    |
-| orderId           | LONG   | NO        |                  |
-| origClientOrderId | STRING | NO        |                  |
-| recvWindow        | LONG   | NO        |                  |
+| Name              | Type   | Mandatory | Description   |
+| ----------------- | ------ | --------- | ------------- |
+| symbol            | STRING | YES       | The pair name |
+| orderId           | LONG   | NO        |               |
+| origClientOrderId | STRING | NO        |               |
+| recvWindow        | LONG   | NO        |               |
 
-
-Either <b>orderId</b> or <b>origClientOrderId</b> must be sent.
+Either `<b>`orderId`</b>` or `<b>`origClientOrderId`</b>` must be sent.
 
 ```js
 console.log(
@@ -3027,6 +3022,7 @@ console.log(
     "priceProtect": false               // if conditional order trigger is protected   
 }
 ```
+
 </details>
 
 #### futuresAllOrders
@@ -3034,20 +3030,20 @@ console.log(
 Get all account orders; active, canceled, or filled.
 
 - These orders will not be found
-  - order status is CANCELED or EXPIRED, <b>AND</b>
-  - order has NO filled trade, <b>AND</b>
+  - order status is CANCELED or EXPIRED, `<b>`AND`</b>`
+  - order has NO filled trade, `<b>`AND`</b>`
   - created time + 7 days < current time
-  
-| Name              | Type   | Mandatory | Description            |
-| ----------------- | ------ | --------  | ---------------------- |
-| symbol            | STRING | YES       | The pair name          |
-| orderId           | LONG   | NO        |                        |
-| startTime         | LONG   | NO        |                        |
-| endTime           | LONG   | NO        |                        |
-| limit             | INT    | NO        | Default 500; max 1000. |
-| recvWindow        | LONG   | NO        |                        |
 
-If <b>orderId</b> is set, it will get orders >= that <b>orderId</b>. Otherwise most recent orders are returned.
+| Name       | Type   | Mandatory | Description            |
+| ---------- | ------ | --------- | ---------------------- |
+| symbol     | STRING | YES       | The pair name          |
+| orderId    | LONG   | NO        |                        |
+| startTime  | LONG   | NO        |                        |
+| endTime    | LONG   | NO        |                        |
+| limit      | INT    | NO        | Default 500; max 1000. |
+| recvWindow | LONG   | NO        |                        |
+
+If `<b>`orderId`</b>` is set, it will get orders >= that `<b>`orderId`</b>`. Otherwise most recent orders are returned.
 
 ```js
 console.log(
@@ -3092,19 +3088,18 @@ console.log(
   }
 ]
 ```
-</details>
 
+</details>
 
 #### futuresLeverage
 
 Change user's initial leverage of specific symbol market.
 
-
-| Name              | Type   | Mandatory | Description                                |
-| ----------------- | ------ | --------  | ------------------------------------------ |
-| symbol            | STRING | YES       | The pair name                              |
-| leverage          | INT    | YES       | target initial leverage: int from 1 to 125 |
-| recvWindow        | LONG   | NO        |                                            |
+| Name       | Type   | Mandatory | Description                                |
+| ---------- | ------ | --------- | ------------------------------------------ |
+| symbol     | STRING | YES       | The pair name                              |
+| leverage   | INT    | YES       | target initial leverage: int from 1 to 125 |
+| recvWindow | LONG   | NO        |                                            |
 
 ```js
 console.log(
@@ -3125,17 +3120,18 @@ console.log(
     "symbol": "BTCUSDT"
 }
 ```
+
 </details>
 
 #### futuresMarginType
 
 Change margin type.
 
-| Name              | Type   | Mandatory | Description       |
-| ----------------- | ------ | --------  | ----------------- |
-| symbol            | STRING | YES       | The pair name     |
-| marginType        | ENUM   | YES       | ISOLATED, CROSSED |
-| recvWindow        | LONG   | NO        |                   |
+| Name       | Type   | Mandatory | Description       |
+| ---------- | ------ | --------- | ----------------- |
+| symbol     | STRING | YES       | The pair name     |
+| marginType | ENUM   | YES       | ISOLATED, CROSSED |
+| recvWindow | LONG   | NO        |                   |
 
 ```js
 console.log(
@@ -3155,19 +3151,20 @@ console.log(
     "msg": "success"
 }
 ```
+
 </details>
 
 #### futuresPositionMargin
 
 Modify isolated position margin.
 
-| Name              | Type    | Mandatory | Description                                       |
-| ----------------- | ------- | --------  | ------------------------------------------------- |
-| symbol            | STRING  | YES       | The pair name                                     |
-| positionSide      | ENUM    | NO        | Default BOTH for One-way Mode; <br>LONG or SHORT for Hedge Mode. <br>It must be sent with Hedge Mode. |
-| amount            | DECIMAL | YES       |                                                   |
-| type              | INT     | YES       | 1: Add position margin，2: Reduce position margin |
-| recvWindow        | LONG    | NO        |                                                   |
+| Name         | Type    | Mandatory | Description                                                                                                  |
+| ------------ | ------- | --------- | ------------------------------------------------------------------------------------------------------------ |
+| symbol       | STRING  | YES       | The pair name                                                                                                |
+| positionSide | ENUM    | NO        | Default BOTH for One-way Mode;``LONG or SHORT for Hedge Mode. ``It must be sent with Hedge Mode. |
+| amount       | DECIMAL | YES       |                                                                                                              |
+| type         | INT     | YES       | 1: Add position margin，2: Reduce position margin                                                            |
+| recvWindow   | LONG    | NO        |                                                                                                              |
 
 Only for isolated symbol.
 
@@ -3192,20 +3189,21 @@ console.log(
     "type": 1
 }
 ```
+
 </details>
 
 #### futuresMarginHistory
 
 Get position margin change history.
 
-| Name              | Type   | Mandatory | Description                                       |
-| ----------------- | ------ | --------  | ------------------------------------------------- |
-| symbol            | STRING | YES       | The pair name                                     |
-| type              | INT    | NO        | 1: Add position margin，2: Reduce position margin |
-| startTime         | LONG   | NO        |                                                   |
-| endTime           | LONG   | NO        |                                                   |
-| limit             | INT    | NO        | Default 500;                                      |
-| recvWindow        | LONG   | NO        |                                                   |
+| Name       | Type   | Mandatory | Description                                       |
+| ---------- | ------ | --------- | ------------------------------------------------- |
+| symbol     | STRING | YES       | The pair name                                     |
+| type       | INT    | NO        | 1: Add position margin，2: Reduce position margin |
+| startTime  | LONG   | NO        |                                                   |
+| endTime    | LONG   | NO        |                                                   |
+| limit      | INT    | NO        | Default 500;                                      |
+| recvWindow | LONG   | NO        |                                                   |
 
 ```js
 console.log(
@@ -3241,20 +3239,21 @@ console.log(
     }
 ]
 ```
+
 </details>
 
 #### futuresIncome
 
 Get income history.
 
-| Name              | Type   | Mandatory | Description                                       |
-| ----------------- | ------ | --------  | ------------------------------------------------- |
-| symbol            | STRING | NO        | The pair name                                     |
-| incomeType        | STRING | NO        | "TRANSFER"，"WELCOME_BONUS", "REALIZED_PNL"，<br>"FUNDING_FEE", "COMMISSION", and "INSURANCE_CLEAR" |
-| startTime         | LONG   | NO        | Timestamp in ms to get funding from INCLUSIVE.    |
-| endTime           | LONG   | NO        | Timestamp in ms to get funding until INCLUSIVE.   |
-| limit             | INT    | NO        | Default 100; max 1000                             |
-| recvWindow        | LONG   | NO        |                                                   |
+| Name       | Type   | Mandatory | Description                                                                                             |
+| ---------- | ------ | --------- | ------------------------------------------------------------------------------------------------------- |
+| symbol     | STRING | NO        | The pair name                                                                                           |
+| incomeType | STRING | NO        | "TRANSFER"，"WELCOME_BONUS", "REALIZED_PNL"，``"FUNDING_FEE", "COMMISSION", and "INSURANCE_CLEAR" |
+| startTime  | LONG   | NO        | Timestamp in ms to get funding from INCLUSIVE.                                                          |
+| endTime    | LONG   | NO        | Timestamp in ms to get funding until INCLUSIVE.                                                         |
+| limit      | INT    | NO        | Default 100; max 1000                                                                                   |
+| recvWindow | LONG   | NO        |                                                                                                         |
 
 - If incomeType is not sent, all kinds of flow will be returned
 - "trandId" is unique in the same incomeType for a user
@@ -3280,7 +3279,7 @@ console.log(
         "income": "-0.37500000",        // income amount
         "asset": "USDT",                // income asset
         "info":"TRANSFER",              // extra information
-        "time": 1570608000000,      
+        "time": 1570608000000,    
         "tranId":"9689322392",          // transaction id
         "tradeId":""                    // trade id, if existing
     },
@@ -3296,6 +3295,7 @@ console.log(
     }
 ]
 ```
+
 </details>
 
 #### futuresAccountBalance
@@ -3385,7 +3385,7 @@ console.log(
 ```
 
 | Param      | Type   | Mandatory | Description                                               |
-| ---------- | ------ | --------- | ----------------------------------------------------------|
+| ---------- | ------ | --------- | --------------------------------------------------------- |
 | symbol     | STRING | NO        | Use if you are only interested in brackets for one symbol |
 | recvWindow | LONG   | NO        |                                                           |
 
@@ -3410,6 +3410,7 @@ console.log(
     }
 ]
 ```
+
 </details>
 
 ### WebSockets
@@ -3432,7 +3433,7 @@ Live depth market data feed. The first parameter can either
 be a single symbol string or an array of symbols. If you wish
 to specify the update speed (can either be `1000ms` or `100ms`)
 of the stream then append the speed at the end of the symbol
-string as follows: `ETHBTC@100ms` 
+string as follows: `ETHBTC@100ms`
 
 ```js
 client.ws.depth('ETHBTC', depth => {
@@ -3477,7 +3478,7 @@ Top levels bids and asks, pushed every second. Valid levels are 5, 10, or 20.
 Accepts an array of objects for multiple depths. If you wish
 to specify the update speed (can either be `1000ms` or `100ms`)
 of the stream then append the speed at the end of the symbol
-string as follows: `ETHBTC@100ms` 
+string as follows: `ETHBTC@100ms`
 
 ```js
 client.ws.partialDepth({ symbol: 'ETHBTC', level: 10 }, depth => {
@@ -3558,6 +3559,7 @@ client.ws.allTickers(tickers => {
   console.log(tickers)
 })
 ```
+
 #### miniTicker
 
 24hr Mini Ticker statistics for a symbol pushed every second. Accepts an array of symbols.
@@ -3779,6 +3781,7 @@ const clean = client.ws.futuresDepth('ETHBTC', depth => {
   ]
 }
 ```
+
 </details>
 
 #### futuresDepth
@@ -3812,6 +3815,7 @@ client.ws.futuresDepth('ETHBTC', depth => {
   ]
 }
 ```
+
 </details>
 
 #### futuresPartialDepth
@@ -3847,6 +3851,7 @@ client.ws.futuresPartialDepth({ symbol: 'ETHBTC', level: 10 }, depth => {
   ]
 }
 ```
+
 </details>
 
 #### futuresTicker
@@ -3884,6 +3889,7 @@ client.ws.futuresTicker('HSRETH', ticker => {
   totalTrades: 18151,
 }
 ```
+
 </details>
 
 #### futuresAllTickers
@@ -3928,6 +3934,7 @@ client.ws.futuresCandles('ETHBTC', '1m', candle => {
   quoteBuyVolume: '1.06838790'
 }
 ```
+
 </details>
 
 #### futuresAggTrades
@@ -3957,8 +3964,8 @@ client.ws.futuresAggTrades(['ETHBTC', 'BNBBTC'], trade => {
   isBuyerMaker: false,
 }
 ```
-</details>
 
+</details>
 
 #### futuresLiquidations
 
@@ -3980,7 +3987,7 @@ client.ws.futuresLiquidations(['ETHBTC', 'BNBBTC'], liquidation => {
   origQty: '3.43500000',
   lastFilledQty: '3.43500000',
   accumulatedQty: '3.43500000',
-  averagePrice: '0.04923600',
+  avgPrice: '0.04923600',
   status: 'FILLED',
   timeInForce: 'IOC',
   type: 'LIMIT',
@@ -4011,7 +4018,7 @@ client.ws.futuresAllLiquidations(liquidation => {
   origQty: '3.43500000',
   lastFilledQty: '3.43500000',
   accumulatedQty: '3.43500000',
-  averagePrice: '0.04923600',
+  avgPrice: '0.04923600',
   status: 'FILLED',
   timeInForce: 'IOC',
   type: 'LIMIT',
@@ -4058,9 +4065,9 @@ const futuresUser = await client.ws.futuresUser(msg => {
       crossWalletBalance:'100.12345678'
     },
     {
-      asset:'BNB',           
+      asset:'BNB',         
       walletBalance:'1.00000000',
-      crossWalletBalance:'0.00000000'         
+      crossWalletBalance:'0.00000000'       
     }
   ],
   positions: [
@@ -4087,6 +4094,7 @@ const futuresUser = await client.ws.futuresUser(msg => {
   ],
 }
 ```
+
 </details>
 
 #### Common
@@ -4116,6 +4124,7 @@ console.log(client.getInfo())
   }
 }
 ```
+
 </details>
 
 ### ErrorCodes
@@ -4128,3 +4137,4 @@ import Binance, { ErrorCodes } from 'binance-api-node'
 
 console.log(ErrorCodes.INVALID_ORDER_TYPE) // -1116
 ```
+

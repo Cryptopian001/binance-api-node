@@ -1,6 +1,6 @@
 {
-  "name": "binance-api-node",
-  "version": "0.11.40",
+  "name": "@cryptopian/binance-api-node",
+  "version": "1.4.0",
   "description": "A node API wrapper for Binance",
   "main": "dist",
   "files": [
@@ -62,5 +62,8 @@
   },
   "author": "Balthazar Gronon <git@balthazar.dev>",
   "homepage": "https://github.com/Ashlar/binance-api-node",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "http://nexus.cryptopian.io:8081/repository/npm-hosted/"
+  }
 }
