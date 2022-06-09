@@ -467,5 +467,21 @@ export default opts => {
     lendingAccount: payload => privCall('/sapi/v1/lending/union/account', payload),
     fundingWallet: payload => privCall('/sapi/v1/asset/get-funding-asset', payload, 'POST'),
     apiPermission: payload => privCall('/sapi/v1/account/apiRestrictions', payload),
+
+    flexibleProductList: payload => privCall('/sapi/v1/lending/daily/product/list', payload),
+    flexibleUserLeftQuota: payload => privCall('/sapi/v1/lending/daily/userLeftQuota', payload),
+    flexibleUserRedemptionQuota: payload => privCall('/sapi/v1/lending/daily/userRedemptionQuota', payload),
+    purchaseFlexibleProduct: payload => privCall('/sapi/v1/lending/daily/purchase', payload, 'POST'),
+    redeemFlexibleProduct: payload => privCall('/sapi/v1/lending/daily/redeem', payload, 'POST'),
+    getFlexibleProductPosition: payload => privCall('/sapi/v1/lending/daily/token/position', payload),
+
+    fixedProductList: payload => privCall('/sapi/v1/lending/project/list', payload),
+    purchaseFixedProduct: payload => privCall('/sapi/v1/lending/customizedFixed/purchase', payload, 'POST'),
+    getFixedProductPosition: payload => privCall('/sapi/v1/lending/project/position/list', payload),
+
+    getLendingPurchaseHistory: payload => privCall('/sapi/v1/lending/union/purchaseRecord', payload),
+    getLendingRedemptionHistory: payload => privCall('/sapi/v1/lending/union/redemptionRecord', payload),
+    getLendingInterestHistory: payload => privCall('/sapi/v1/lending/union/interestHistory', payload),
+    changeFixedToFlexible: payload => privCall('/sapi/v1/lending/positionChanged', payload, 'POST'),
   }
 }
