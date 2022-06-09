@@ -1,6 +1,6 @@
 {
   "name": "@cryptopian/binance-api-node",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A node API wrapper for Binance",
   "main": "dist",
   "files": [
