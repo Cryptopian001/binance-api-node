@@ -733,6 +733,235 @@ declare module '@cryptopian/binance-api-node' {
       accountMaintMargin: string
       accountStatus: string
     }>
+
+    flexibleProductList(options: {
+      status?: SavingProductStatus
+      featured?: FlexibleProductFeatured
+      current?: number
+      size?: number
+      recvWindow?: number
+    }): Promise<FlexibleProduct[]>
+    flexibleUserLeftQuota(options: {
+      productId: string
+      recvWindow?: number
+    }): Promise<{ asset: string; leftQuota: number }>
+    purchaseFlexibleProduct(options: {
+      productId: string
+      amount: number
+      recvWindow?: number
+    }): Promise<{ purchaseId: number }>
+    flexibleUserRedemptionQuota(options: {
+      productId: string
+      type: RedemptionType
+      recvWindow?: number
+    }): Promise<{
+      asset: string
+      dailyQuota: number
+      leftQuota: number
+      minRedemptionAmount: number
+      recvWindow?: number
+    }>
+    redeemFlexibleProduct(options: {
+      productId: string
+      amount: number
+      type: RedemptionType
+      recvWindow?: number
+    }): Promise<any>
+    getFlexibleProductPosition(options: {
+      asset?: string
+      recvWindow?: number
+    }): Promise<FlexiblePosition[]>
+    fixedProductList(options: {
+      asset?: string
+      type: FixedProductType
+      status?: SavingProductStatus
+      isSortAsc?: boolean
+      sortBy?: SortByEnum
+      current?: number
+      size?: number
+      recvWindow?: number
+    }): Promise<FixedProduct[]>
+    purchaseFixedProduct(options: {
+      projectId: string
+      lot: number
+      recvWindow?: number
+    }): Promise<{ purchaseId: number }>
+    getFixedProductPosition(options: {
+      asset?: string
+      projectId?: string
+      status?: FixedProductStatus
+      recvWindow?: number
+    }): Promise<FixedPosition[]>
+    getPurchaseRecord(options: {
+      lendingType: SavingProductType
+      asset?: string
+      startTime?: number
+      endTime?: number
+      current?: number
+      size?: number
+      recvWindow?: number
+    }): Promise<(FlexiblePurchaseRecord | FixedPurchaseRecord)[]>
+    getRedemptionRecord(options: {
+      lendingType: SavingProductType
+      asset?: string
+      startTime?: number
+      endTime?: number
+      current?: number
+      size?: number
+      recvWindow?: number
+    }): Promise<(FlexibleRedemptionRecord | FixedRedemptionRecord)[]>
+    getInterestHistory(options: {
+      lendingType: SavingProductType
+      asset?: string
+      startTime?: number
+      endTime?: number
+      current?: number
+      size?: number
+      recvWindow?: number
+    }): Promise<SavingInterestHistory[]>
+    changeFixedToFlexible(options: {
+      projectId: string
+      lot: number
+      positionId?: number
+      recvWindow?: number
+    }): Promise<{
+      dailyPurchaseId: number
+      success: boolean
+      time: number
+    }>
+  }
+
+  export type SavingProductStatus = 'ALL' | 'SUBSCRIBABLE' | 'UNSUBSCRIBABLE'
+  export type FlexibleProductFeatured = 'ALL' | 'TRUE'
+  export type RedemptionType = 'FAST' | 'NORMAL'
+  export type FlexibleProductType = 'ACTIVITY' | 'CUSTOMIZED_FIXED'
+  export type FixedProductType = 'ACTIVITY' | 'CUSTOMIZED_FIXED'
+  export type FixedProductStatus = 'HOLDING' | 'REDEEMED'
+  export type SortByEnum = 'START_TIME' | 'LOT_SIZE' | 'INTEREST_RATE' | 'DURATION'
+  export type SavingProductType = 'DAILY' | 'ACTIVITY' | 'CUSTOMIZED_FIXED'
+
+  export interface FlexibleProduct {
+    asset: string
+    avgAnnualInterestRate: number
+    tierAnnualInterestRate: { [key: string]: number }
+    canPurchase: boolean
+    canRedeem: boolean
+    featured: boolean
+    minPurchaseAmount: number
+    productId: string
+    purchasedAmount: number
+    status: string
+    upLimit: number
+    upLimitPerUser: number
+  }
+
+  export interface FlexiblePosition {
+    asset: string
+    productId: string
+    productName: string
+    dailyInterestRate: number
+    annualInterestRate: number
+    avgAnnualInterestRate: number
+    totalAmount: number
+    lockedAmount: number
+    freeAmount: number
+    freezeAmount: number
+    totalInterest: number
+    canRedeem: boolean
+    redeemingAmount: number
+    todayPurchasedAmount: number
+    tierAnnualInterestRate: { [key: string]: number }
+  }
+
+  export interface FixedProduct {
+    asset: string
+    displayPriority: number
+    duration: number
+    interestPerLot: number
+    interestRate: number
+    lotSize: number
+    lotsLowLimit: number
+    lotsPurchased: number
+    lotsUpLimit: number
+    maxLotsPerUser: number
+    needKyc: boolean
+    projectId: string
+    projectName: string
+    status: string
+    type: string
+    withAreaLimitation: boolean
+  }
+
+  export interface FixedPosition {
+    asset: string
+    canTransfer: boolean
+    createTimestamp: number
+    duration: number
+    endTime: number
+    interest: number
+    interestRate: number
+    lot: number
+    positionId: number
+    principal: number
+    projectId: string
+    projectName: string
+    purchaseTime: number
+    redeemDate: string
+    startTime: number
+    status: string
+    type: string
+  }
+
+  export interface FlexiblePurchaseRecord {
+    amount: number
+    asset: string
+    createTime: number
+    lendingType: SavingProductType
+    productName: string
+    purchaseId: number
+    status: string
+  }
+
+  export interface FixedPurchaseRecord {
+    amount: number
+    asset: string
+    createTime: number
+    lendingType: SavingProductType
+    lot: number
+    productName: string
+    purchaseId: number
+    status: string
+  }
+
+  export interface FlexibleRedemptionRecord {
+    amount: number
+    asset: string
+    createTime: number
+    principal: number
+    projectId: string
+    projectName: string
+    status: string
+    type: RedemptionType
+  }
+
+  export interface FixedRedemptionRecord {
+    amount: number
+    asset: string
+    createTime: number
+    interest: number
+    principal: number
+    projectId: string
+    projectName: string
+    status: string
+    type: RedemptionType
+  }
+
+  export interface SavingInterestHistory {
+    asset: string
+    interest: number
+    lendingType: SavingProductType
+    productName: string
+    time: number
   }
 
   export interface HttpError extends Error {
