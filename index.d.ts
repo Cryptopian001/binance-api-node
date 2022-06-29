@@ -734,7 +734,7 @@ declare module '@cryptopian/binance-api-node' {
       accountStatus: string
     }>
 
-    flexibleProductList(options: {
+    flexibleProductList(options?: {
       status?: SavingProductStatus
       featured?: FlexibleProductFeatured
       current?: number
@@ -747,7 +747,7 @@ declare module '@cryptopian/binance-api-node' {
     }): Promise<{ asset: string; leftQuota: number }>
     purchaseFlexibleProduct(options: {
       productId: string
-      amount: number
+      amount: string
       recvWindow?: number
     }): Promise<{ purchaseId: number }>
     flexibleUserRedemptionQuota(options: {
@@ -756,18 +756,18 @@ declare module '@cryptopian/binance-api-node' {
       recvWindow?: number
     }): Promise<{
       asset: string
-      dailyQuota: number
-      leftQuota: number
-      minRedemptionAmount: number
+      dailyQuota: string
+      leftQuota: string
+      minRedemptionAmount: string
       recvWindow?: number
     }>
     redeemFlexibleProduct(options: {
       productId: string
-      amount: number
+      amount: string
       type: RedemptionType
       recvWindow?: number
     }): Promise<any>
-    getFlexibleProductPosition(options: {
+    getFlexibleProductPosition(options?: {
       asset?: string
       recvWindow?: number
     }): Promise<FlexiblePosition[]>
@@ -786,7 +786,7 @@ declare module '@cryptopian/binance-api-node' {
       lot: number
       recvWindow?: number
     }): Promise<{ purchaseId: number }>
-    getFixedProductPosition(options: {
+    getFixedProductPosition(options?: {
       asset?: string
       projectId?: string
       status?: FixedProductStatus
@@ -842,35 +842,35 @@ declare module '@cryptopian/binance-api-node' {
 
   export interface FlexibleProduct {
     asset: string
-    avgAnnualInterestRate: number
+    avgAnnualInterestRate: string
     tierAnnualInterestRate: { [key: string]: number }
     canPurchase: boolean
     canRedeem: boolean
     featured: boolean
-    minPurchaseAmount: number
+    minPurchaseAmount: string
     productId: string
-    purchasedAmount: number
+    purchasedAmount: string
     status: string
-    upLimit: number
-    upLimitPerUser: number
+    upLimit: string
+    upLimitPerUser: string
   }
 
   export interface FlexiblePosition {
     asset: string
     productId: string
     productName: string
-    dailyInterestRate: number
-    annualInterestRate: number
-    avgAnnualInterestRate: number
-    totalAmount: number
-    lockedAmount: number
-    freeAmount: number
-    freezeAmount: number
-    totalInterest: number
+    dailyInterestRate: string
+    annualInterestRate: string
+    avgAnnualInterestRate: string
+    totalAmount: string
+    lockedAmount: string
+    freeAmount: string
+    freezeAmount: string
+    totalInterest: string
     canRedeem: boolean
-    redeemingAmount: number
-    todayPurchasedAmount: number
-    tierAnnualInterestRate: { [key: string]: number }
+    redeemingAmount: string
+    todayPurchasedAmount: string
+    tierAnnualInterestRate: { [key: string]: string }
   }
 
   export interface FixedProduct {
@@ -898,11 +898,11 @@ declare module '@cryptopian/binance-api-node' {
     createTimestamp: number
     duration: number
     endTime: number
-    interest: number
-    interestRate: number
+    interest: string
+    interestRate: string
     lot: number
     positionId: number
-    principal: number
+    principal: string
     projectId: string
     projectName: string
     purchaseTime: number
